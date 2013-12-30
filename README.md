@@ -1,0 +1,1 @@
+FoodBetter is a version control system for recipes. It allows you to track and constantly improve your favorite recipes.
