@@ -1,14 +1,38 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="FoodBetterApp" ng-init="current_user = <%= current_user.to_json %>;">
 <head>
   <title>FoodBetter</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
-  <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-<%= yield %>
-
+    <div id="main" role="main">
+      <div class="container">
+        <div class="content">
+          <div class="row">
+            <div class="span12">
+              <div class="navbar" bs-navbar>
+                <div class="navbar-inner">
+                  <a class="brand" href="/">FoodBetter</a>
+                  <ul class="nav">
+                    <% if current_user %>
+                      <li data-match-route="/logout"><a data-method="delete" href="/users/sign_out">logout</a></li>
+                    <% end %>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- for devise authentication views only -->
+          <% if !current_user %>
+            <%= yield %>
+          <% else %>
+            <div ng-view></div>
+          <% end %>
+          <footer></footer>
+        </div>
+      </div>
+    </div>
+    <%= javascript_include_tag "application" %>
 </body>
 </html>
