@@ -13,8 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require libs/underscore/underscore
 //= require libs/angular/angular
-//= require libs/angular/angular-resource
+//= require libs/restangular/restangular
 //= require libs/angular/angular-cookies
 //= require ng-rails-csrf
 //= require_tree .

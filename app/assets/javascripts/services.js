@@ -1,55 +1,12 @@
 
-FoodBetterApp.factory('Session', function($location, $http, $q) {
-    // Redirect to the given url (defaults to '/')
-    function redirect(url) {
-    	url = url || '/';
-    	$location.path(url);
-    }
-    var service = {
-    	login: function(email, password) {
-    		return $http.post('/users/sign_in', {user: {email: email, password: password} })
-    			.then(function(response) {
-	    			service.currentUser = response.data.user;
-	    			if (service.isAuthenticated()) {
-                        //TODO: Send them back to where they came from
-                        //$location.path(response.data.redirect);
-                        $location.path('/record');
-                    }
-                });
-    	},
+FoodBetterApp.factory('Recipe', function(Restangular) {
+    var recipes = Restangular.all('recipes');
 
-    	logout: function(redirectTo) {
-    		$http.post('/users/sign_out').then(function() {
-    			service.currentUser = null;
-    			redirect(redirectTo);
-    		});
-    	},
-
-    	register: function(email, password, confirm_password) {
-    		return $http.post('/users.json', {user: {email: email, password: password, password_confirmation: confirm_password} })
-    		.then(function(response) {
-    			service.currentUser = response.data;
-    			if (service.isAuthenticated()) {
-    				$location.path('/record');
-    			}
-    		});
-    	},
-    	requestCurrentUser: function() {
-    		if (service.isAuthenticated()) {
-    			return $q.when(service.currentUser);
-    		} else {
-    			return $http.get('/current_user').then(function(response) {
-    				service.currentUser = response.data.user;
-    				return service.currentUser;
-    			});
-    		}
-    	},
-
-    	currentUser: null,
-
-    	isAuthenticated: function(){
-    		return !!service.currentUser;
-    	}
+    return {
+    	user_recent_recipes: function(user_id) {
+            Restangular.all('recipes').getList({user_id: user_id}).then(function(recipes) {
+                return recipes;
+            });
+        }
     };
-    return service;
 });

@@ -7,10 +7,16 @@ FoodBetter::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'static_pages#index'
 
-  namespace :api, defaults: {format: :json} do
+  scope :api, defaults: {format: :json} do
     resources :users do
+      resources :categories
+    end
+
+    resources :categories do
       resources :recipes
     end
+
+    resources :recipes
   end
 
   # Example of regular route:
