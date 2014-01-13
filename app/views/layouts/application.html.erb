@@ -16,6 +16,7 @@
                   <a class="brand" href="/">FoodBetter</a>
                   <ul class="nav">
                     <% if current_user %>
+                      <li><%= current_user.email %></li>
                       <li data-match-route="/logout"><a data-method="delete" href="/users/sign_out">logout</a></li>
                     <% end %>
                   </ul>
