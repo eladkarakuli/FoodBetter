@@ -11,8 +11,17 @@ FoodBetterApp.factory('Recipe', function(Restangular) {
             return Restangular.one('recipes', recipeId).get();
         },
 
-    	user_recent_recipes: function(user_id) {
+    	userRecentRecipes: function(user_id) {
             return Restangular.all('recipes').getList({filters: {user_id: user_id}, sort: 'updated_at'});
+        },
+
+        getIngridients: function(recipeId) {
+            return Restangular.one('recipes', recipeId).getList('ingridients');
+        },
+
+        createIngridient: function(ingridient) {
+            Restangular.one('recipes', ingridient.recipe_id).all('ingridients').post(ingridient);
         }
+
     };
 });

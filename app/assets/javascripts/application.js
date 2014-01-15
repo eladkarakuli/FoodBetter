@@ -12,7 +12,6 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
 //= require libs/underscore/underscore
 //= require libs/angular/angular
 //= require libs/restangular/restangular

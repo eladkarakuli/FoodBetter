@@ -16,7 +16,9 @@ FoodBetter::Application.routes.draw do
       resources :recipes
     end
 
-    resources :recipes
+    resources :recipes do
+      resources :ingridients
+    end
   end
 
   # Example of regular route:

@@ -1,5 +1,25 @@
-<h1>This is recipe {{recipe.name}}</h1>
+<h1>{{recipe.name}}</h1>
 
+<h2>Ingridients</h2>
+<div>
+	<div ng-repeat="ingridient in ingridients">
+		{{ingridient.description}}
+	</div>
+	<div>
+		<form name="newIngridientForm">
+			<div>
+				<label for="description">Ingridient and quantity</label>
+				<input type="text" name="description" ng-model="newIngridient.description" required ng-minlength=3 />
+			</div>
+			<div>
+				<button ng-click="save()">OK</button>
+			</div>
+		</form>
+	</div>
+</div>
+
+<h2>Recipe</h2>
 <div>
 	{{recipe.notes}}
 </div>
+
