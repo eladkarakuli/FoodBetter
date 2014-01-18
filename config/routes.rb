@@ -18,6 +18,7 @@ FoodBetter::Application.routes.draw do
 
     resources :recipes do
       resources :ingridients
+      resources :recipe_steps
     end
   end
 

@@ -15,6 +15,8 @@ FoodBetterApp.factory('Recipe', function(Restangular) {
             return Restangular.all('recipes').getList({filters: {user_id: user_id}, sort: 'updated_at'});
         },
 
+        // ingridients
+
         getIngridients: function(recipeId) {
             return Restangular.one('recipes', recipeId).getList('ingridients');
         },
@@ -25,6 +27,16 @@ FoodBetterApp.factory('Recipe', function(Restangular) {
 
         deleteIngridient: function(ingridient) {
             Restangular.one('recipes', ingridient.recipe_id).one('ingridients', ingridient.id).remove();
+        },
+
+        // recipe steps
+
+        getRecipeSteps: function(recipeId) {
+            return Restangular.one('recipes', recipeId).getList('recipe_steps');
+        },
+
+        createRecipeStep: function(recipeStep) {
+            return Restangular.one('recipes', recipeStep.recipe_id).all('recipe_steps').post(recipeStep);
         }
 
     };

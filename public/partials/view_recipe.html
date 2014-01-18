@@ -12,7 +12,7 @@
 			<div>
 				<input type="text" name="description" placeholder="Ingridient" ng-model="newIngridient.description" required ng-minlength=3 />
 				<input type="text" name="quantity" placeholder="Quantity" ng-model="newIngridient.quantity" cols="5" required />
-				<button ng-click="save()">add</button>
+				<button ng-click="saveIngridient()">add</button>
 			</div>
 		</form>
 	</div>
@@ -21,5 +21,17 @@
 <h2>Recipe</h2>
 <div>
 	{{recipe.notes}}
+</div>
+
+<div>
+	<div ng-repeat="recipeStep in recipeSteps | orderBy:'step_number'">
+		{{recipeStep.step_number}} {{recipeStep.description}}
+	</div>
+	<form name="newRecipeStepForm">
+		<div>
+			<textarea name="description" placeholder="Step description" ng-model="newRecipeStep.description" cols="30" rows="10"></textarea>
+			<button ng-click="saveRecipeStep()">add</button>
+		</div>
+	</form>
 </div>
 
