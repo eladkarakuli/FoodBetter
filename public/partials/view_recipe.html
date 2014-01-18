@@ -3,16 +3,16 @@
 <h2>Ingridients</h2>
 <div>
 	<div ng-repeat="ingridient in ingridients">
-		{{ingridient.description}}
+		<span ng-click="removeIngridient(ingridient)">X</span>
+		<span>{{ingridient.quantity}}</span> 
+		<span>{{ingridient.description}}</span>
 	</div>
 	<div>
 		<form name="newIngridientForm">
 			<div>
-				<label for="description">Ingridient and quantity</label>
-				<input type="text" name="description" ng-model="newIngridient.description" required ng-minlength=3 />
-			</div>
-			<div>
-				<button ng-click="save()">OK</button>
+				<input type="text" name="description" placeholder="Ingridient" ng-model="newIngridient.description" required ng-minlength=3 />
+				<input type="text" name="quantity" placeholder="Quantity" ng-model="newIngridient.quantity" cols="5" required />
+				<button ng-click="save()">add</button>
 			</div>
 		</form>
 	</div>

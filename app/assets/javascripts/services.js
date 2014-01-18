@@ -20,7 +20,11 @@ FoodBetterApp.factory('Recipe', function(Restangular) {
         },
 
         createIngridient: function(ingridient) {
-            Restangular.one('recipes', ingridient.recipe_id).all('ingridients').post(ingridient);
+            return Restangular.one('recipes', ingridient.recipe_id).all('ingridients').post(ingridient);
+        },
+
+        deleteIngridient: function(ingridient) {
+            Restangular.one('recipes', ingridient.recipe_id).one('ingridients', ingridient.id).remove();
         }
 
     };

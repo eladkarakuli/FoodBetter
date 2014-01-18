@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20140115222528) do
   create_table "ingridients", force: true do |t|
     t.integer  "recipe_id"
     t.string   "description"
+    t.string   "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

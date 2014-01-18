@@ -16,8 +16,13 @@ class IngridientsController < ApplicationController
 		end
 	end
 
+	def destroy
+		Ingridient.find(params[:id]).destroy
+		render json: {}, status: 204
+	end
+
 	private
 		def ingridient_params
-			params.require(:ingridient).permit(:description, :recipe_id)
+			params.require(:ingridient).permit(:description, :recipe_id, :quantity)
 		end
 end

@@ -17,14 +17,25 @@ FoodBetterApp.controller 'AddRecipeCtrl', ['$scope', '$location', 'Recipe', ($sc
 ];
 
 FoodBetterApp.controller 'ViewRecipeCtrl', ['$scope', '$location', '$routeParams', 'Recipe', ($scope, $locatin, $routeParams, Recipe) ->
-	$scope.recipe = Recipe.get($routeParams.id)
-	$scope.ingridients = Recipe.getIngridients($routeParams.id)
+	Recipe.get($routeParams.id).then (recipe) ->
+		$scope.recipe = recipe
+		return
+	Recipe.getIngridients($routeParams.id).then (ingridients) ->
+		$scope.ingridients = ingridients
+		return
 
 	$scope.save = () ->
 		if $scope.newIngridientForm.$valid
 			$scope.newIngridient.recipe_id = $routeParams.id
-			Recipe.createIngridient $scope.newIngridient
-			$scope.ingridients.push $scope.newIngridient
+			Recipe.createIngridient($scope.newIngridient).then (ingridient) ->
+				$scope.ingridients.push ingridient
+			$scope.newIngridient = {}
+			return
+
+	$scope.removeIngridient = (ingridient) ->
+		if $scope.ingridients.length > 0
+			Recipe.deleteIngridient ingridient
+			$scope.ingridients.splice($scope.ingridients.indexOf(ingridient), 1)
 			return
 
 	return
