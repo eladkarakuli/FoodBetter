@@ -2,14 +2,9 @@
 
 <form name="new_recipe">
 	<div>
-		<label for="name">Name</label>
-		<input type="text" name="name" ng-model="recipe.name" required ng-minlength=5 />
+		<input type="text" name="name" placeholder="Recipe name" ng-model="recipe.name" required ng-minlength=5 />
 	</div>
 	<div>
-		<label for="notes">Notes</label>
-		<input type="textarea" name="notes" ng-model="recipe.notes" />
-	</div>
-	<div>
-		<button ng-click="save()">OK</button>
+		<button ng-click="saveRecipe()">OK</button>
 	</div>
 </form>

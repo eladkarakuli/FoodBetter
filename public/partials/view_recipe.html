@@ -1,6 +1,5 @@
 <h1>{{recipe.name}}</h1>
 
-<h2>Ingridients</h2>
 <div>
 	<div ng-repeat="ingridient in ingridients">
 		<span ng-click="removeIngridient(ingridient)">X</span>
@@ -18,7 +17,6 @@
 	</div>
 </div>
 
-<h2>Recipe</h2>
 <div>
 	{{recipe.notes}}
 </div>
@@ -29,7 +27,7 @@
 	</div>
 	<form name="newRecipeStepForm">
 		<div>
-			<textarea name="description" placeholder="Step description" ng-model="newRecipeStep.description" cols="30" rows="10"></textarea>
+			<textarea name="description" placeholder="Step #{{recipeSteps.length + 1}}" ng-model="newRecipeStep.description" cols="50" rows="3"></textarea>
 			<button ng-click="saveRecipeStep()">add</button>
 		</div>
 	</form>

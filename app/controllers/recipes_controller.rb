@@ -21,9 +21,9 @@ class RecipesController < ApplicationController
 		recipe = Recipe.new(recipe_params)
 		recipe.user_id = current_user.id
 		if recipe.save
-			render json: params[:recipe], status: 200
+			render json: recipe, status: 200
 		else
-			render json: params[:recipe], status: 409
+			render json: recipe, status: 409
 		end
 	end
 

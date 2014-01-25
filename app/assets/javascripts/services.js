@@ -4,7 +4,7 @@ FoodBetterApp.factory('Recipe', function(Restangular) {
 
     return {
         create: function(recipe) {
-            recipes.post(recipe);
+            return recipes.post(recipe);
         },
 
         get: function(recipeId) {

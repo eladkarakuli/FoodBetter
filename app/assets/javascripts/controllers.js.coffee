@@ -8,11 +8,11 @@ FoodBetterApp.controller 'MainCtrl', ['$scope', 'Recipe', ($scope, Recipe) ->
 ];
 
 FoodBetterApp.controller 'AddRecipeCtrl', ['$scope', '$location', 'Recipe', ($scope, $location, Recipe) ->
-	$scope.save = () ->
+	$scope.saveRecipe = () ->
 		if $scope.new_recipe.$valid
-			Recipe.create $scope.recipe
-			$location.path('/');
-
+			Recipe.create($scope.recipe).then (recipe) ->
+				$location.path('/recipes/' + recipe.id);
+				return
 		return
 ];
 
@@ -27,7 +27,7 @@ FoodBetterApp.controller 'ViewRecipeCtrl', ['$scope', '$location', '$routeParams
 		$scope.recipeSteps = recipeSteps
 		return
 
-	$scope.addIngridient = () ->
+	$scope.saveIngridient = () ->
 		if $scope.newIngridientForm.$valid
 			$scope.newIngridient.recipe_id = $routeParams.id
 			Recipe.createIngridient($scope.newIngridient).then (ingridient) ->
@@ -44,7 +44,7 @@ FoodBetterApp.controller 'ViewRecipeCtrl', ['$scope', '$location', '$routeParams
 	$scope.saveRecipeStep = () ->
 		if $scope.newRecipeStepForm.$valid
 			$scope.newRecipeStep.recipe_id = $routeParams.id
-			$scope.newRecipeStep.step_number = $scope.recipeSteps.length
+			$scope.newRecipeStep.step_number = $scope.recipeSteps.length + 1
 			Recipe.createRecipeStep($scope.newRecipeStep).then (recipeStep) ->
 				$scope.recipeSteps.push recipeStep
 			$scope.newRecipeStep = {}
