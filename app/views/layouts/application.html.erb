@@ -6,34 +6,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-    <div id="main" role="main">
-      <div class="container">
-        <div class="content">
-          <div class="row">
-            <div class="span12">
-              <div class="navbar" bs-navbar>
-                <div class="navbar-inner">
-                  <a class="brand" href="/">FoodBetter</a>
-                  <ul class="nav">
-                    <% if current_user %>
-                      <li><%= current_user.email %></li>
-                      <li data-match-route="/logout"><a data-method="delete" href="/users/sign_out">logout</a></li>
-                    <% end %>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-          <!-- for devise authentication views only -->
-          <% if !current_user %>
-            <%= yield %>
-          <% else %>
-            <div ng-view></div>
-          <% end %>
-          <footer></footer>
-        </div>
+  <div id="main" role="main">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">FoodBetter</a>
       </div>
-    </div>
-    <%= javascript_include_tag "application" %>
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <li><p class="navbar-text"><%= current_user.email %></p></li>
+          <li data-match-route="/logout"><a data-method="delete" href="/users/sign_out">logout</a></li>
+        <% end %>
+      </ul>
+    </nav>
+
+
+    <!-- for devise authentication views only -->
+    <% if !current_user %>
+    <%= yield %>
+    <% else %>
+    <div ng-view></div>
+    <% end %>
+    <footer></footer>
+  </div>
+
+<%= javascript_include_tag "application" %>
 </body>
 </html>

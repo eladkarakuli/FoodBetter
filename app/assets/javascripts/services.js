@@ -41,3 +41,11 @@ FoodBetterApp.factory('Recipe', function(Restangular) {
 
     };
 });
+
+FoodBetterApp.factory('Location', function($location) {
+    return {
+        goTo: function(path) {
+            $location.path(path);
+        }
+    };
+});

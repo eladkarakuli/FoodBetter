@@ -16,5 +16,6 @@
 //= require libs/angular/angular
 //= require libs/restangular/restangular
 //= require libs/angular/angular-cookies
+//= require libs/angular/ui-bootstrap-tpls-0.10.0
 //= require ng-rails-csrf
 //= require_tree .

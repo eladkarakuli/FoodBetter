@@ -36,7 +36,7 @@ gem 'devise'
 
 gem 'ng-rails-csrf', :git => "git://github.com/xrd/ng-rails-csrf.git"
 
-gem 'bootstrap-sass'
+gem 'twitter-bootstrap-rails'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

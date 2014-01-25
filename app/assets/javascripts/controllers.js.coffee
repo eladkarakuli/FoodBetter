@@ -1,8 +1,10 @@
-FoodBetterApp.controller 'MainCtrl', ['$scope', 'Recipe', ($scope, Recipe) ->
+FoodBetterApp.controller 'MainCtrl', ['$scope', 'Recipe', 'Location', ($scope, Recipe, Location) ->
 	recipes = Recipe.userRecentRecipes($scope.current_user.id).then((recipes) ->
 			$scope.recipes = recipes
 			return
 		)
+
+	$scope.goTo = Location.goTo
 
 	return
 ];
@@ -16,7 +18,7 @@ FoodBetterApp.controller 'AddRecipeCtrl', ['$scope', '$location', 'Recipe', ($sc
 		return
 ];
 
-FoodBetterApp.controller 'ViewRecipeCtrl', ['$scope', '$location', '$routeParams', 'Recipe', ($scope, $locatin, $routeParams, Recipe) ->
+FoodBetterApp.controller 'ViewRecipeCtrl', ['$scope', '$location', '$routeParams', 'Recipe', ($scope, $location, $routeParams, Recipe) ->
 	Recipe.get($routeParams.id).then (recipe) ->
 		$scope.recipe = recipe
 		return
