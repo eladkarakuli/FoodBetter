@@ -17,3 +17,14 @@ body {
 	padding-left: 20px;
 	padding-right: 20px;
 }
+
+.clickable {
+	cursor: pointer;
+}
+
+h3.weak-colored-text {
+	color: rgb(150, 150, 150);
+}
+
+.no-bullets-ul {
+}

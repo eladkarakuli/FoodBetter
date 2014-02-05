@@ -1,3 +1,13 @@
 // Place all the styles related to the ingridients controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.ingridients-list {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.ingridient-quantity {
+	color: rgb(170, 170, 170);
+}

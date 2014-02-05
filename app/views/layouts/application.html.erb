@@ -8,17 +8,18 @@
 <body>
   <div id="main" role="main">
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="/">FoodBetter</a>
-      </div>
-      <ul class="nav navbar-nav navbar-right">
-        <% if current_user %>
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">FoodBetter</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+          <% if current_user %>
           <li><p class="navbar-text"><%= current_user.email %></p></li>
           <li data-match-route="/logout"><a data-method="delete" href="/users/sign_out">logout</a></li>
-        <% end %>
-      </ul>
+          <% end %>
+        </ul>
+      </div>
     </nav>
-
 
     <!-- for devise authentication views only -->
     <% if !current_user %>
@@ -29,6 +30,6 @@
     <footer></footer>
   </div>
 
-<%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "application" %>
 </body>
 </html>
