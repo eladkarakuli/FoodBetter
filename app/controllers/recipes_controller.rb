@@ -36,6 +36,16 @@ class RecipesController < ApplicationController
 		end
 	end
 
+    def update
+        recipe = Recipe.find(params[:id])
+        recipe.notes = params[:notes]
+        if recipe.save
+            render json: recipe, status: 200
+        else
+            render json: recipe, status: 400
+        end
+    end
+
 	private
 		def recipe_params
 			params.require(:recipe).permit(:name, :notes, :user_id)

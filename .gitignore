@@ -15,4 +15,7 @@
 /log/*.log
 /tmp
 
+# idea
+/.idea
+
 /open_questions

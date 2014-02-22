@@ -1,25 +1,26 @@
 FoodBetterApp.directive('editableInput', ['EditableInput', function(EditableInput) {
-	var editTemplate = '<textarea ng-show="isEditMode" ng-dblclick="switchToPreviewMode()">blabla</textarea>' +
-						'<span ng-click="saveData()" ng-show="isEditMode" ng-model="fieldValue" class="glyphicon glyphicon-ok clickable"></span>';
-	var previewTemplate = '<div ng-hide="isEditMode" ng-dblclick="switchToEditMode()">{{????}}</div>';
 	return {
 		restrict: 'E',
 		replace: true,
+        templateUrl: 'partials/editable-text/editable-text.html',
 		scope: {
 			resourceId: '@',
 			resourceNameSingle: '@',
 			resourceNamePlural: '@',
-			fieldName: '@'
+			fieldName: '@',
+            fieldValue: '@',
+            lastFieldValue: '@fieldValue'
 		},
 		compile: function(element, attributes, transclude) {
-			element.html(editTemplate);
-			element.append(previewTemplate);
-
 			return function(scope, element, attributes) {
-				scope.isEditMode = false;
-
+                scope.isEditMode = false;
 				scope.switchToEditMode = function() {
 					scope.isEditMode = true;
+                    var fieldValueTextArea = $(element).find('textarea');
+                    var textBoxValue = scope.lastFieldValue;
+                    fieldValueTextArea.val('');
+                    fieldValueTextArea.blur().focus();
+                    fieldValueTextArea.val(textBoxValue);
 				};
 
 				scope.switchToPreviewMode = function() {
@@ -28,8 +29,20 @@ FoodBetterApp.directive('editableInput', ['EditableInput', function(EditableInpu
 
 				scope.saveData = function() {
 					EditableInput.saveFieldValue(scope.resourceNamePlural, scope.resourceId,
-											scope.fieldName, scope.fieldValue);
+						scope.fieldName, scope.fieldValue).then(function() {
+                            scope.lastFieldValue = scope.fieldValue;
+                            scope.switchToPreviewMode();
+                        });
 				};
+
+                scope.cancelEdit = function() {
+                    scope.fieldValue = scope.lastFieldValue;
+                    scope.switchToPreviewMode();
+                };
+
+                scope.getPreviewText = function() {
+                    return (scope.fieldValue === '' ? 'click to edit' : scope.fieldValue);
+                };
 			};
 		}
 	};

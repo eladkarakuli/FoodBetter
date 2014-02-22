@@ -1,0 +1,6 @@
+<div>
+    <textarea ng-show="isEditMode" ng-model="fieldValue" autofocus>{{getPreviewText()}}</textarea>
+    <span ng-click="saveData()" ng-show="isEditMode" class="glyphicon glyphicon-ok clickable"></span>
+    <span ng-click="cancelEdit()" ng-show="isEditMode" class="glyphicon glyphicon-remove clickable"></span>
+    <div ng-hide="isEditMode" ng-click="switchToEditMode()">{{getPreviewText()}}</div>
+</div>

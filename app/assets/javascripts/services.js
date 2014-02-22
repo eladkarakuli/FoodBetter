@@ -45,7 +45,9 @@ FoodBetterApp.factory('Recipe', function(Restangular) {
 FoodBetterApp.factory('EditableInput', function(Restangular) {
     return {
         saveFieldValue: function(pluralResourceName, resourceId, fieldName, fieldValue) {
-            Restangular.one('/' + pluralResourceName, resourceId).post({fieldName: fieldValue});
+            var postData = {};
+            postData[fieldName] = fieldValue;
+            return Restangular.one(pluralResourceName, resourceId).put(postData);
         }
     };
 });

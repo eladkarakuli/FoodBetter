@@ -1,54 +1,54 @@
 <h1>{{recipe.name}}</h1>
 
-<div class="recipe-notes">
-	<p>{{recipe.notes}}</p>
-</div>
-
-<editable-input resource-id="{{recipe.id}}" resource-name-single="recipe" resource-name-plural="recipes" field-name="notes"></editable-input>
+<editable-input resource-id="{{recipe.id}}" resource-name-single="recipe"
+                resource-name-plural="recipes" field-name="notes" field-value="{{recipe.notes}}"></editable-input>
 
 <div>
-	<h3 class="weak-colored-text">Ingridients</h3>
-	<ul class="ingridients-list">
-		<li ng-repeat="ingridient in ingridients">
-			<span ng-click="removeIngridient(ingridient)" class="glyphicon glyphicon-remove clickable"></span>
-			<span class="ingridient-quantity">{{ingridient.quantity}}</span> 
-			<span>{{ingridient.description}}</span>
-		</li>
-	</ul>
-	<form name="newIngridientForm">
-		<div class="row">
-			<div class="col-xs-3">
-				<input type="text" class="form-control" name="description" placeholder="Ingridient" ng-model="newIngridient.description" required ng-minlength=3 />
-			</div>
-			<div class="col-xs-2">
-				<input type="text" class="form-control" name="quantity" placeholder="Quantity" ng-model="newIngridient.quantity" cols="5" required />
-			</div>
-			<button class="btn btn-primary btn-sm" ng-click="saveIngridient()">
-				<span class="glyphicon glyphicon-plus"></span>
-				add
-			</button>
-		</div>
-	</form>
+    <h3 class="weak-colored-text">Ingridients</h3>
+    <ul class="ingridients-list">
+        <li ng-repeat="ingridient in ingridients">
+            <span ng-click="removeIngridient(ingridient)" class="glyphicon glyphicon-remove clickable"></span>
+            <span class="ingridient-quantity">{{ingridient.quantity}}</span>
+            <span>{{ingridient.description}}</span>
+        </li>
+    </ul>
+    <form name="newIngridientForm">
+        <div class="row">
+            <div class="col-xs-3">
+                <input type="text" class="form-control" name="description" placeholder="Ingridient"
+                       ng-model="newIngridient.description" required ng-minlength=3/>
+            </div>
+            <div class="col-xs-2">
+                <input type="text" class="form-control" name="quantity" placeholder="Quantity"
+                       ng-model="newIngridient.quantity" cols="5" required/>
+            </div>
+            <button class="btn btn-primary btn-sm" ng-click="saveIngridient()">
+                <span class="glyphicon glyphicon-plus"></span>
+                add
+            </button>
+        </div>
+    </form>
 </div>
 
 <div>
-	<h3 class="weak-colored-text">Steps</h3>
-	<ul class="steps-list">
-		<div ng-repeat="recipeStep in recipeSteps | orderBy:'step_number'">
-			<span class="recipe-step-number">{{recipeStep.step_number}}</span>
-			<span class="recipe-step-text">{{recipeStep.description}}</span>
-		</div>
-	</ul>
-	<form name="newRecipeStepForm">
-		<div class="row">
-			<div class="col-xs-5">
-				<textarea name="description" class="form-control" placeholder="Step #{{recipeSteps.length + 1}}" ng-model="newRecipeStep.description" cols="50" rows="3"></textarea>
-			</div>
-			<button class="btn btn-primary btn-sm" ng-click="saveRecipeStep()">
-				<span class="glyphicon glyphicon-plus"></span>
-				add
-			</button>
-		</div>
-	</form>
+    <h3 class="weak-colored-text">Steps</h3>
+    <ul class="steps-list">
+        <div ng-repeat="recipeStep in recipeSteps | orderBy:'step_number'">
+            <span class="recipe-step-number">{{recipeStep.step_number}}</span>
+            <span class="recipe-step-text">{{recipeStep.description}}</span>
+        </div>
+    </ul>
+    <form name="newRecipeStepForm">
+        <div class="row">
+            <div class="col-xs-5">
+                <textarea name="description" class="form-control" placeholder="Step #{{recipeSteps.length + 1}}"
+                          ng-model="newRecipeStep.description" cols="50" rows="3"></textarea>
+            </div>
+            <button class="btn btn-primary btn-sm" ng-click="saveRecipeStep()">
+                <span class="glyphicon glyphicon-plus"></span>
+                add
+            </button>
+        </div>
+    </form>
 </div>
 
