@@ -47,6 +47,8 @@ FoodBetterApp.factory('EditableInput', function(Restangular) {
         saveFieldValue: function(pluralResourceName, resourceId, fieldName, fieldValue) {
             var postData = {};
             postData[fieldName] = fieldValue;
+            var t = [1,2,3];
+            var k = t + 1;
             return Restangular.one(pluralResourceName, resourceId).put(postData);
         }
     };
