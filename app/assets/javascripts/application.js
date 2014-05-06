@@ -12,10 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require libs/underscore/underscore
-//= require libs/angular/angular
-//= require libs/restangular/restangular
-//= require libs/angular/angular-cookies
-//= require libs/angular/ui-bootstrap-tpls-0.10.0
+//= require underscore/underscore
+//= require angular/angular
+//= require angular-route/angular-route
+//= require restangular/dist/restangular
+//= require angular-cookies/angular-cookies
+//= require angular-strap/dist/angular-strap.tpl.js
+//= require angular-strap/dist/angular-strap.js
 //= require ng-rails-csrf
 //= require_tree .

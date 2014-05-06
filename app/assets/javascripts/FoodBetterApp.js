@@ -1,4 +1,4 @@
-FoodBetterApp = angular.module('FoodBetterApp', ['ngRoute', 'ng-rails-csrf', 'restangular', 'ui.bootstrap']).
+FoodBetterApp = angular.module('FoodBetterApp', ['ngRoute', 'ng-rails-csrf', 'restangular', 'mgcrea.ngStrap']).
 	config(['$routeProvider', function($routeProvider) {
 		$routeProvider.
 			when('/', {
